@@ -70,9 +70,10 @@ def taskStatus(tasknewID):
     return StatusOfTheTask(taskInfo, taskJob)
 
 def TaskThreadSleep(taskId, sleep):
-    pathNameOut = os.path.join(os.getcwd(), app.config["ResultsSimpleFilePath"], taskId , "out")
-    exe = "python3 " + os.path.join(os.getcwd(), 'app', 'executables', 'SleepTaskTest.py ' + str(sleep))
-    cmd = [exe, sleep]
+    pathNameOut = os.path.join(os.getcwd(), 'app', 'static', 'results', taskId , "out")
+    exe = "python " + os.path.join(os.getcwd(), 'app', 'executables', 'SleepTaskTest.py ' + str(sleep))
+    print ("exe->", exe)
+    cmd = exe
     task = TaskCaller(cmd, pathNameOut)
     output = task.callTask().stdout
     taskOutput = "<br />".join(output.split("\n"))

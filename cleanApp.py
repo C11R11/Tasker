@@ -5,7 +5,8 @@ import sqlite3
 def cleanApp():
     #Clean results
     pathName = os.path.join(os.getcwd(), 'app', 'static', 'results')
-    shutil.rmtree(pathName)
+    if os.path.exists(pathName):
+        shutil.rmtree(pathName)
     os.mkdir(pathName)
 
     #CleanBD
