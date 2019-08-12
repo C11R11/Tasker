@@ -12,11 +12,6 @@ import hashlib
 import time
 import shutil
 from werkzeug.utils import secure_filename
-import plotly
-import plotly.graph_objs as go
-
-import pandas as pd
-import numpy as np
 
 from flask import Flask, render_template, request, redirect, url_for
 
@@ -94,8 +89,8 @@ def TaskThreadSleep(taskId, sleep):
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.login(app.config["EmailServerLogin"], app.config["EmailServerLoginPass"])
     server.sendmail(
-        app.config["EmailSender"], 
-    app.config["EmailList"], 
+        app.config["EmailSender"],
+    app.config["EmailList"],
     email)
     server.quit()
 
