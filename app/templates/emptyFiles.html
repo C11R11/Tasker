@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").attr("disabled", "disabled");
+        $(".nav-link").removeClass("active");
+        $("#navDashboard").addClass("active");
+    });
+</script>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-3">
+
+    <h1 class="display-4">No hay archivos asociados</h1>
+    <p class="lead">No existen archivos para generar la tarea solicitada.</p>
+    <a class="btn btn-primary" href="/newtaskForm" role="button">Crear Tarea</a>
+
+</main>
+
+{% endblock%}

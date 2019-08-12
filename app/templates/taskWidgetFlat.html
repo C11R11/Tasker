@@ -1,0 +1,50 @@
+<div class="card float-left mr-2 mt-2 taskwidgetFlat">
+  <div class="card-body">
+    <p class="card-text"> Tarea {{task["ejecutable"]}} <span
+        class="badge badge-pill badge-{{badge}}"><small>{{task["estado"]}}</small></span></p>
+    <!--<h1 class="card-title display-1 text-primary">35%</h1>-->
+    <p class="card-text">
+      
+      <b>Id:</b> {{task["ID"]}}<br />
+      <b>Nombre:</b> {{task["name"]}}<br />   
+      <b>Creada por:</b> {{task["user"]}}<br />
+
+    {%if taskJob.IsAFinishedTask():%}
+      <b>Duración:</b> {{task["endtime"]}}<br />
+      <a href="/taskStatus/{{task["ID"]}}" target="_blank" class="btn btn-sm btn-block btn-success">Reporte</a>
+    {%endif%}
+
+    {%if taskJob.IsAFinishedTask() == false:%}
+      <b>Tiempo en ejecución:</b> {{task["elapsed"]}}<br />
+      <p class="card-text"><small class="text-muted">Última actualización: hace 1 minuto</small></p>
+    {%endif%}
+    
+  </div>
+</div>
+
+<!--<div class="card">
+            <div class="card-header" id="headingOne" data-target="#{{task['ID'][:10]}}" aria-expanded="true" aria-controls="collapseOne">
+              <span class="badge badge-pill badge-warning"><small>{{task["estado"]}}</small></span>  Tarea <a href="/taskStatus/{{task['ID']}}" data-toggle="collapse"  > {{task["ID"]}}</a>
+            </div>
+            <div id="{{task['ID'][:10]}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                    <p class="card-text"><b>Tipo:</b> {{task["ejecutable"]}}<br />
+                        <b>Fecha solicitada:</b> {{task["creation"]}}<br />
+                        <b>Tiempo en ejecución:</b> 4 horas, 20 minutos.<br />
+                        <b>Usuario:</b> {{task["user"]}}</p>
+                    <p class="card-text"><small class="text-muted">Última actualización: hace 1 minuto</small></p>
+              </div>
+            </div>
+          </div>-->
+
+<!--<li class="list-group-item d-flex justify-content-between align-items-center">
+        <p class="card-text">tarea <a href="/taskStatus/{{task["ID"]}}" class="badge badge-info">{{task["ID"]}} </a></p> <small class="text-muted">Última actualización: hace 1 minuto</small>
+        <span class="badge badge-pill badge-warning"><small>en proceso...</small></span>
+      </li>-->
+
+<!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{task["ID"]}} </h5>
+            <small>Última actualización: hace 1 minuto</small>
+        </div>
+    </a>-->

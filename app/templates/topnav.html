@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brandmr-5 text-center mr-5" href="/dashboard">Brand logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    
+    <input type="text" class="form-control form-control-dark" type="text" aria-label="Search" id="myInput" placeholder="Buscar una tarea en particular....">      
+    <ul class="navbar-nav px-3">
+      <li class="nav-item active dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <img src={{ url_for('static', filename='avatar.png')}} class="user-image" alt="User Image">
+          <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+          <span class="hidden-xs">Raúl Olivares</span>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Mi cuenta</a>
+          <a class="dropdown-item" href="/plans">Suscripciones</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/login">Cerrar sesión</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").attr("disabled", "disabled");
+        $(".nav-link").removeClass("active");
+        $("#taskListCatalogue").addClass("active");
+    });
+</script>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-3 mt-3">
+    <div class="card-deck mb-3 text-center col-lg-5 col-md-12 col-xl-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Tarea Sleep</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">Descripción</h1>
+                <p>
+                  Tarea de prueba que espera una cierta cantidad de segundos ingresada por el usuario.  
+                </p>
+                <h3 class="card-title pricing-card-title">Entradas</h3>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Cantidad de segundos a esperar</li>
+                </ul>
+                <h3 class="card-title pricing-card-title">Salidas</h3>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Ninguna. Termina su tarea después de los segundos ingresados.</li>
+                </ul>
+                <a class="btn btn-lg btn-block btn-outline-primary" href="/newtaskForm" role="button">Crear Tarea</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock%}

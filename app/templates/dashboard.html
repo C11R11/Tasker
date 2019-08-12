@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        $(".nav-link").removeClass("active");
+        $("#navDashboard").addClass("active");
+
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val();
+            $(".taskwidgetFlat div").each(function () {
+
+                if ($(this).text().match(value)) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+
+            });
+        });
+    });
+</script>
+
+<main role="main" class="col-sm-12 col-md-9 ml-sm-auto col-lg-10 px-3 text-center">
+    <!--<input type="text" class="form-control form-control-lg" id="myInput" placeholder="Buscar una tarea en particular....">-->
+
+    <!--<ul class="list-group list-group-flush">-->
+    <!--<div class="accordion" id="accordionExample">-->
+    {% for task in tasks %}
+    {{ task | safe}}
+    {% endfor %}
+    <!--</div>
+        </ul>-->
+</main>
+
+{% endblock%}
