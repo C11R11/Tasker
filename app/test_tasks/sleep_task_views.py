@@ -1,4 +1,5 @@
-from app import app
+from . import test_tasks_blueprint
+from flask import current_app as app
 from flask import Flask, render_template, request, redirect, url_for
 import json, os, threading
 from jobs_core.TaskRepo import TaskRepo
@@ -35,7 +36,7 @@ def TaskThreadSleep(taskId, sleep):
     email)
     server.quit()
 
-@app.route('/newTaskSleep', methods=['POST'])
+@test_tasks_blueprint.route('/newTaskSleep', methods=['POST'])
 def newTaskSleep():
     if request.method == 'POST':
         # obtenemos el archivo del input "archivo"
@@ -55,6 +56,6 @@ def newTaskSleep():
         x.start()
     return redirect(url_for("dashboard"))
 
-@app.route('/newtaskForm')
+@test_tasks_blueprint.route('/newtaskForm')
 def newtaskForm():
     return render_template('newTaskForm.html')
