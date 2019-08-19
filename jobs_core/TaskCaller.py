@@ -16,5 +16,5 @@ if __name__ == "__main__":
     print("exe->", exe)
     cmd = exe
     print("cmd->", cmd)
-    task = TaskCaller(cmd, os.path.join(os.getcwd(), "executables"))
+    task = TaskCaller(cmd, os.path.join(os.getcwd(), "test_exes"))
     output = task.callTask().stdout

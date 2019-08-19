@@ -1,3 +1,10 @@
+from app import app
+from flask import Flask, render_template, request, redirect, url_for
+import json, os, threading
+from jobs_core.TaskRepo import TaskRepo
+from jobs_core.TaskCaller import TaskCaller
+from jobs_core.TaskJob import TaskJob
+
 def TaskThreadSleep(taskId, sleep):
     pathNameOut = os.path.join(os.getcwd(), 'app', 'static', 'results', taskId , "out")
     exe = "python " + os.path.join(os.getcwd(), 'app', 'executables', 'SleepTaskTest.py ' + str(sleep))
@@ -8,7 +15,7 @@ def TaskThreadSleep(taskId, sleep):
     taskOutput = "<br />".join(output.split("\n"))
     print("output->", output)
 
-    taskrepo = TaskRepo()
+    taskrepo = TaskRepo(app.config["BdNameConnection"])
     taskrepo.FinishJob(taskId, taskOutput)
 
     logFilename = os.path.join(os.getcwd(),  pathNameOut, 'log.txt')
@@ -33,10 +40,10 @@ def newTaskSleep():
     if request.method == 'POST':
         # obtenemos el archivo del input "archivo"
         segs = request.form['segundos']
-        task = TaskRepo()
+        taskRepo = TaskRepo(app.config["BdNameConnection"])
         taskname = request.form['nombretarea']
         #print("taskname", taskname)
-        taskInfo = json.loads(task.GetTask(str(task.CreateTaskJob(taskname))))
+        taskInfo = json.loads(taskRepo.GetTask(str(taskRepo.CreateTaskJob(taskname))))
         taskId = taskInfo["ID"]
         pathName = os.path.join(app.config["ResultsSimpleFilePath"], taskId)
         pathNameIn = os.path.join(app.config["ResultsSimpleFilePath"], taskId , "in")

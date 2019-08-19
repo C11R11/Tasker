@@ -1,4 +1,3 @@
-from app import app
 import sqlite3, os, json
 import hashlib
 import time
@@ -9,7 +8,7 @@ class TaskRepo:
     internalPath = os.path.abspath(os.path.dirname(__file__))
 
     #Constructor, define mouse velocity
-    def __init__(self):
+    def __init__(self, BdNameConnection):
         self.QUERY_ELAPSED_MINUTES = "strftime('%M minutos', julianday('now') - julianday(creation)) as elapsed "
         self.QUERY_ENDTIME_MINUTES = "strftime('%M minutos', julianday(ended) - julianday(creation)) as endtime "
         self.QUERY_COLUMNS_BASE = "ID, creation, ended, user, ejecutable, estado, output, name"
@@ -17,10 +16,11 @@ class TaskRepo:
         self.QUERY_SELECT_SINGLE_TASK = self.QUERY_SELECT_ALL_TASKS + " where id=?"
         self.QUERY_INSERT_SINGLE_TASK = "INSERT INTO TaskJob VALUES(?, strftime('%Y-%m-%d %H:%M:%S' ,'now'), '', 'usuario1', 'update with points', 'Ejecutandose', '', ?)"
         self.QUERY_UPDATE_FINISH_JOB = "UPDATE TaskJob SET estado = 'Terminado', output = ?, ended = strftime('%Y-%m-%d %H:%M:%S' ,'now') where id=?"
+        self.BdNameConnection = BdNameConnection
 
     def CreateTaskJob(self, name = "default name"):
         self.idTaskJob = self.GetUniqueHash()
-        con = sqlite3.connect(app.config["BdNameConnection"])
+        con = sqlite3.connect(self.BdNameConnection)
         cur = con.cursor()
         cur.execute(self.QUERY_INSERT_SINGLE_TASK, (self.idTaskJob, name))
         con.commit()
@@ -33,7 +33,7 @@ class TaskRepo:
         return hash.hexdigest()[:10]
         
     def GetTask(self, id):
-        con = sqlite3.connect(app.config["BdNameConnection"])
+        con = sqlite3.connect(self.BdNameConnection)
         con.row_factory = self.dict_factory
         cur = con.cursor()
         cur.execute(self.QUERY_SELECT_SINGLE_TASK, (id,))
@@ -43,14 +43,14 @@ class TaskRepo:
         return json.dumps(result)
     
     def FinishJob(self, Id, status):
-        conn = sqlite3.connect(app.config["BdNameConnection"])
+        conn = sqlite3.connect(self.BdNameConnection)
         cursor = conn.cursor()
         cursor.execute(self.QUERY_UPDATE_FINISH_JOB, (status, Id))
         conn.commit()
         conn.close()
 
     def GetTasks(self):
-        con = sqlite3.connect(app.config["BdNameConnection"])
+        con = sqlite3.connect(self.BdNameConnection)
         con.row_factory = self.dict_factory
         cur = con.cursor()
         cur.execute(self.QUERY_SELECT_ALL_TASKS)

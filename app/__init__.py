@@ -3,10 +3,9 @@ import os
 
 app = Flask(__name__)
 
-from app import views
-from app import TaskRepo
-from app import TaskCaller
-from app import TaskJob
+from app import admin_views
+from app import sleep_task_views
+from app import tasks_views
 
 app.config["EmailList"] = [""]
 app.config["EmailServerLogin"] = ""
