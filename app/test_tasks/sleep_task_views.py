@@ -19,11 +19,16 @@ def TaskThreadSleep(taskId, sleep):
     taskrepo = TaskRepo(app.config["BdNameConnection"])
     taskrepo.FinishJob(taskId, taskOutput)
 
+    WriteLog(pathNameOut, output)
+    SendEmail(taskId, output)
+
+def WriteLog(pathNameOut, output):
     logFilename = os.path.join(os.getcwd(),  pathNameOut, 'log.txt')
     f = open(logFilename , 'w' )
     f.write(output)
     f.close()
 
+def SendEmail(taskId, output):
     import smtplib
 
     email = "Tarea id = " + taskId + " Finalizada\n\nDetalle:\n\n__________" + output + "\n\n_________"
@@ -36,24 +41,33 @@ def TaskThreadSleep(taskId, sleep):
     email)
     server.quit()
 
+def MakeNewTaskPaths(taskId):
+    pathName = os.path.join(app.config["ResultsSimpleFilePath"], taskId)
+    pathNameIn = os.path.join(app.config["ResultsSimpleFilePath"], taskId , "in")
+    pathNameOut = os.path.join(app.config["ResultsSimpleFilePath"], taskId , "out")
+    os.mkdir(pathName)
+    os.mkdir(pathNameIn)
+    os.mkdir(pathNameOut)
+
+def StartTaskThread(taskId, segs):
+    MakeNewTaskPaths(taskId)
+    x = threading.Thread(target=TaskThreadSleep, args=(taskId, segs))
+    x.start()
+
+def MakeNewTask():
+    taskRepo = TaskRepo(app.config["BdNameConnection"])
+    taskname = request.form['nombretarea']
+    #print("taskname", taskname)
+    taskInfo = json.loads(taskRepo.GetTask(str(taskRepo.CreateTaskJob(taskname))))
+    taskId = taskInfo["ID"]
+    return taskId
+
 @test_tasks_blueprint.route('/newTaskSleep', methods=['POST'])
 def newTaskSleep():
     if request.method == 'POST':
         # obtenemos el archivo del input "archivo"
         segs = request.form['segundos']
-        taskRepo = TaskRepo(app.config["BdNameConnection"])
-        taskname = request.form['nombretarea']
-        #print("taskname", taskname)
-        taskInfo = json.loads(taskRepo.GetTask(str(taskRepo.CreateTaskJob(taskname))))
-        taskId = taskInfo["ID"]
-        pathName = os.path.join(app.config["ResultsSimpleFilePath"], taskId)
-        pathNameIn = os.path.join(app.config["ResultsSimpleFilePath"], taskId , "in")
-        pathNameOut = os.path.join(app.config["ResultsSimpleFilePath"], taskId , "out")
-        os.mkdir(pathName)
-        os.mkdir(pathNameIn)
-        os.mkdir(pathNameOut)
-        x = threading.Thread(target=TaskThreadSleep, args=(taskId, segs))
-        x.start()
+        StartTaskThread(MakeNewTask(), segs)
     return redirect(url_for("dashboard"))
 
 @test_tasks_blueprint.route('/newtaskForm')

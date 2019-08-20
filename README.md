@@ -18,7 +18,7 @@ How to run it:
     export FLASK_APP="run.py"
     export FLASK_ENV="development"
     export FLASK_DEBUG=1
-    flask run
+    flask run --host 0.0.0.0 --port 1111
     
     #Windows (Powershell)
     $env:FLASK_APP="run.py"
