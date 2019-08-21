@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-3">
+  <div class="row mb-3 mt-2">
+    <div class="col-sm-6">
+      <h5 class="card-title">Tarea test: Sleep for seconds</h5>
+      <form action="{{ url_for('test_tasks.newTaskSleep') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <input name="nombretarea" class="form-control" placeholder="nombre tarea...">
+          <input name="segundos" class="form-control" placeholder="segundos retraso...">
+        </div>
+        <button type="submit" class="btn btn-primary">Crear tarea</button>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock%}

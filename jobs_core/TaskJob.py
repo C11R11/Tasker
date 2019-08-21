@@ -14,10 +14,7 @@ class TaskJob:
         self.SourceData = json.loads(self.taskrepo.GetTask(self.taskId))
         if (self.SourceData):
             print ("la tarea no ha sido creada aun")
-        self.EmailList = ["cristian.rodriguez@maptek.cl"]
-        self.EmailServerLogin = "guitrackbots@gmail.com"
-        self.EmailServerLoginPass = "g46ytd72"
-        self.EmailSender =  "info@Tasker.cl"
+        self.IsEmailConfigured = False
 
     def GetJobId(self):
         return self.taskId
@@ -38,16 +35,23 @@ class TaskJob:
         taskOutput = "<br />".join(output.split("\n"))
         print("output->", output)
         self.taskrepo.FinishJob(self.taskId, taskOutput)
-
         WriteLog(self.pathNameOut, output)
-        SendEmail(self.taskId, 
+        if (self.IsEmailConfigured):
+            SendEmail(self.taskId, 
                     output, 
                     self.EmailServerLogin, 
                     self.EmailServerLoginPass,
                     self.EmailSender,
                     self.EmailList
                     )
-    
+   
+    def SetEmailConfiguration(self, EmailList, EmailServerLogin, EmailServerLoginPass, EmailSender):
+        self.EmailList = EmailList
+        self.EmailServerLogin = EmailServerLogin
+        self.EmailServerLoginPass = EmailServerLoginPass
+        self.EmailSender = EmailSender
+        self.IsEmailConfigured = False
+
     def MakeNewTaskPaths(self):
         os.mkdir(self.pathNameBase)
         os.mkdir(self.pathNameIn)

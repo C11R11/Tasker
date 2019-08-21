@@ -12,6 +12,13 @@ def SendEmail(taskId,
               EmailServerLoginPass, 
               EmailSender, 
               EmailList):
+    if (EmailServerLogin == '' or  
+        EmailServerLoginPass == '' or 
+        EmailSender == '' or 
+        EmailList == ''):
+        print('No fue posible enviar correos')
+        return
+
     import smtplib
     email = "Tarea id = " + taskId + " Finalizada\n\nDetalle:\n\n__________" + output + "\n\n_________"
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)

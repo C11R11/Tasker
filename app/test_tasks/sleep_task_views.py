@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import json, os, threading
 from jobs_core.TaskRepo import TaskRepo
 from jobs_core.TaskJob import TaskJob
-from jobs_core.TaskCaller import TaskCaller
+from jobs_core.utils import SendEmail
 
 @test_tasks_blueprint.route('/newTaskSleep', methods=['POST'])
 def newTaskSleep():
@@ -13,6 +13,10 @@ def newTaskSleep():
         segs = request.form['segundos']
         taskRepo = TaskRepo(app.config["BdNameConnection"])
         taskjob = TaskJob(request.form['nombretarea'], taskRepo)
+        taskjob.SetEmailConfiguration(app.config["EmailServerLogin"], 
+                                    app.config["EmailServerLoginPass"],
+                                    app.config["EmailSender"],
+                                    app.config["EmailList"])
         pathName = os.path.join(os.getcwd(), 'app', 'static', 'results', taskjob.GetJobId())
         exe = "python " + os.path.join(os.getcwd(), 'app', 'executables', 'SleepTaskTest.py ' + str(segs))
         taskjob.StartTask(pathName, exe)
