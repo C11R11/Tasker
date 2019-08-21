@@ -1,7 +1,7 @@
 from . import test_tasks_blueprint
 from flask import current_app as app
 from flask import Flask, render_template, request, redirect, url_for
-import json, os, threading
+import os
 from jobs_core.TaskRepo import TaskRepo
 from jobs_core.TaskJob import TaskJob
 from jobs_core.utils import SendEmail

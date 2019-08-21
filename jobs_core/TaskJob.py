@@ -12,6 +12,7 @@ class TaskJob:
         self.taskrepo = taskrepo
         self.taskId = self.taskrepo.CreateTaskJob(taskname)
         self.SourceData = json.loads(self.taskrepo.GetTask(self.taskId))
+        print("self.SourceData-->", self.SourceData)
         if (self.SourceData):
             print ("la tarea no ha sido creada aun")
         self.IsEmailConfigured = False
