@@ -24,6 +24,10 @@
 </script>
 
 <main role="main" class="col-sm-12 col-md-9 ml-sm-auto col-lg-10 px-3 text-center">
+
+    <div class="text-left">
+        <a class="" href="/test_tasks/newtaskForm" role="button">Crear nueva tarea test</a>
+    </div>  
     <!--<input type="text" class="form-control form-control-lg" id="myInput" placeholder="Buscar una tarea en particular....">-->
 
     <!--<ul class="list-group list-group-flush">-->
@@ -31,6 +35,8 @@
     {% for task in tasks %}
     {{ task | safe}}
     {% endfor %}
+
+    
     <!--</div>
         </ul>-->
 </main>
