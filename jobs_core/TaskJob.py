@@ -3,28 +3,36 @@ from jobs_core.TaskRepo import TaskRepo
 from jobs_core.TaskCaller import TaskCaller
 from jobs_core.utils import *
 
-ResultsSimpleFilePath = os.path.join('app', 'static', 'results')
-
 class TaskJob:
     #Constructor, define mouse velocity
     def __init__(self, taskname, taskrepo):
         self.taskname = taskname
         self.taskrepo = taskrepo
         self.taskId = self.taskrepo.CreateTaskJob(taskname)
-        self.SourceData = json.loads(self.taskrepo.GetTask(self.taskId))
-        print("self.SourceData-->", self.SourceData)
-        if (self.SourceData):
-            print ("la tarea no ha sido creada aun")
+        self.JobInitialized = False
+        self.JobFinished = False
+        self.PrintJobStatus()
         self.IsEmailConfigured = False
 
     def GetJobId(self):
         return self.taskId
+
+    def TheJobBegan(self):
+        return self.JobInitialized
+
+    def TheJobHasFinished(self):
+        return self.JobFinished
+    
+    def PrintJobStatus(self):
+        print("self.JobInitialized->", self.JobInitialized)
+        print("self.JobFinished->", self.JobFinished)
 
     def StartTask(self, pathNameBase, exe):
         self.pathNameBase = pathNameBase
         self.pathNameOut = os.path.join(self.pathNameBase, "out")
         self.pathNameIn = os.path.join(self.pathNameBase, "in")
         self.exe = exe
+        self.JobInitialized = True
         x = threading.Thread(target=self.ExecuteTask, args=())
         x.start()
 
@@ -34,8 +42,8 @@ class TaskJob:
         task = TaskCaller(cmd, self.pathNameOut)
         output = task.callTask().stdout
         taskOutput = "<br />".join(output.split("\n"))
-        print("output->", output)
         self.taskrepo.FinishJob(self.taskId, taskOutput)
+        self.JobFinished = True
         WriteLog(self.pathNameOut, output)
         if (self.IsEmailConfigured):
             SendEmail(self.taskId, 
@@ -57,30 +65,3 @@ class TaskJob:
         os.mkdir(self.pathNameBase)
         os.mkdir(self.pathNameIn)
         os.mkdir(self.pathNameOut)
-
-    def IsAFinishedTask(self):
-        if self.SourceData["estado"] == "Terminado":
-            return True
-        return False
-    
-    def GetAllFilesInput(self):
-        #print("Current Working Directory " , os.getcwd())
-        path = os.path.join(os.getcwd(), ResultsSimpleFilePath,  self.taskId , "in")
-        #print(path)
-        list_of_files = []
-        for filename in os.listdir(path):
-            filename = os.path.join("results", self.taskId, "in",filename)
-            filename = "/".join(filename.split(os.path.sep))
-            list_of_files.append(filename)
-        return list_of_files
-
-    def GetAllFilesOutput(self):
-        print("Current Working Directory " , os.getcwd())
-        path = os.path.join(os.getcwd(), ResultsSimpleFilePath,  self.taskId , "out")
-        print(path)
-        list_of_files = []
-        for filename in os.listdir(path):
-            filename = os.path.join("results", self.taskId, "out",filename)
-            filename = "/".join(filename.split(os.path.sep))
-            list_of_files.append(filename)
-        return list_of_files

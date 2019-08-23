@@ -40,6 +40,8 @@ class TaskRepo:
         con.commit()
         result = cur.fetchone()
         con.close()
+        if (result is None):
+            return ""
         return json.dumps(result)
     
     def FinishJob(self, Id, status):

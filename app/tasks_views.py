@@ -2,7 +2,7 @@ from app import app
 from flask import Flask, render_template, request, redirect, url_for
 import json
 from jobs_core.TaskRepo import TaskRepo
-from jobs_core.TaskJob import TaskJob
+from jobs_core.Task import Task
 
 @app.route("/dashboard")
 def dashboard():
@@ -13,7 +13,7 @@ def dashboard():
         return render_template('emptyList.html')
     else:
         for taskInfo in allTasks:
-            taskJob = TaskJob(taskInfo["ID"], taskrepo)
+            taskJob = Task(taskInfo["ID"], taskrepo)
             badge = "warning"
             if taskJob.IsAFinishedTask():
                 badge = "success"
@@ -32,7 +32,7 @@ def GetWidgetForTask(id):
 def taskStatus(tasknewID):
     taskrepo = TaskRepo(app.config["BdNameConnection"])
     taskInfo = json.loads(taskrepo.GetTask(tasknewID))
-    taskJob = TaskJob(tasknewID, taskrepo)
+    taskJob = Task(tasknewID, taskrepo)
     return StatusOfTheTask(taskInfo, taskJob)
 
 @app.route("/catalogue")
