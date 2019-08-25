@@ -1,4 +1,5 @@
 import sqlite3, os, json
+from sqlite3 import Error
 import hashlib
 import time
 
@@ -14,18 +15,29 @@ class TaskRepo:
         self.QUERY_COLUMNS_BASE = "ID, creation, ended, user, ejecutable, estado, output, name"
         self.QUERY_SELECT_ALL_TASKS = "SELECT " + self.QUERY_COLUMNS_BASE + ", " + self.QUERY_ELAPSED_MINUTES + ", " +self.QUERY_ENDTIME_MINUTES + "FROM TaskJob"
         self.QUERY_SELECT_SINGLE_TASK = self.QUERY_SELECT_ALL_TASKS + " where id=?"
-        self.QUERY_INSERT_SINGLE_TASK = "INSERT INTO TaskJob VALUES(?, strftime('%Y-%m-%d %H:%M:%S' ,'now'), '', 'usuario1', 'update with points', 'Ejecutandose', '', ?)"
+        self.QUERY_INSERT_SINGLE_TASK = "INSERT INTO TaskJob VALUES(?, strftime('%Y-%m-%d %H:%M:%S' ,'now'), '', 'usuario sin definir', 'tarea sin definir', 'Ejecutandose', '', ?)"
         self.QUERY_UPDATE_FINISH_JOB = "UPDATE TaskJob SET estado = 'Terminado', output = ?, ended = strftime('%Y-%m-%d %H:%M:%S' ,'now') where id=?"
         self.BdNameConnection = BdNameConnection
 
     def CreateTaskJob(self, name = "default name"):
         self.idTaskJob = self.GetUniqueHash()
-        con = sqlite3.connect(self.BdNameConnection)
+        try:
+            con = self.CreateConnection()
+        except Error as e:
+            print(e)
         cur = con.cursor()
         cur.execute(self.QUERY_INSERT_SINGLE_TASK, (self.idTaskJob, name))
         con.commit()
         con.close()
         return self.idTaskJob
+
+    def CreateConnection(self):
+        try:
+            con = sqlite3.connect(self.BdNameConnection)
+            return con
+        except Error as e:
+            print(e)
+        return None
 
     def GetUniqueHash(self):
         hash = hashlib.sha1()
@@ -33,7 +45,7 @@ class TaskRepo:
         return hash.hexdigest()[:10]
         
     def GetTask(self, id):
-        con = sqlite3.connect(self.BdNameConnection)
+        con = self.CreateConnection()
         con.row_factory = self.dict_factory
         cur = con.cursor()
         cur.execute(self.QUERY_SELECT_SINGLE_TASK, (id,))
@@ -45,14 +57,14 @@ class TaskRepo:
         return json.dumps(result)
     
     def FinishJob(self, Id, status):
-        conn = sqlite3.connect(self.BdNameConnection)
+        conn = self.CreateConnection()
         cursor = conn.cursor()
         cursor.execute(self.QUERY_UPDATE_FINISH_JOB, (status, Id))
         conn.commit()
         conn.close()
 
     def GetTasks(self):
-        con = sqlite3.connect(self.BdNameConnection)
+        con = self.CreateConnection()
         con.row_factory = self.dict_factory
         cur = con.cursor()
         cur.execute(self.QUERY_SELECT_ALL_TASKS)
