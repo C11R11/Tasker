@@ -1,16 +1,21 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<script src="{{ url_for('static', filename='dropzone.js') }}"  ></script>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-3">
   <div class="row mb-3 mt-2">
-    <div class="col-sm-6">
-      <h5 class="card-title">Tarea test: Sleep for seconds</h5>
+    <div class="col-sm-6 bg-light text-dark p-3 ml-2">
+      <h5 class="card-title">Tarea test: Esperar segundos</h5>
       <form action="{{ url_for('test_tasks.newTaskSleep') }}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <input name="nombretarea" class="form-control" placeholder="nombre tarea...">
-          <input name="segundos" class="form-control" placeholder="segundos retraso...">
+          <input name="segundos" class="form-control mt-1" placeholder="segundos retraso...">
+          <input type="file" name="file[]" class="mt-3" multiple="" placeholder="archivos...">
         </div>
-        <button type="submit" class="btn btn-primary">Crear tarea</button>
+        <div class="input-group-prepend">
+          <button type="submit" class="btn btn-primary btn-block">Crear tarea</button>
+        </div>
+        
       </form>
     </div>
   </div>

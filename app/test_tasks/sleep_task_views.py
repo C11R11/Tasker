@@ -11,8 +11,11 @@ def newTaskSleep():
     if request.method == 'POST':
         # obtenemos el archivo del input "archivo"
         segs = request.form['segundos']
+        uploaded_files = request.files.getlist("file[]")
+        print (uploaded_files)
+
         taskRepo = TaskRepo(app.config["BdNameConnection"])
-        taskjob = TaskJob(request.form['nombretarea'], taskRepo)
+        taskjob = TaskJob(request.form['nombretarea'], taskRepo, uploaded_files)
         taskjob.SetEmailConfiguration(app.config["EmailServerLogin"], 
                                     app.config["EmailServerLoginPass"],
                                     app.config["EmailSender"],

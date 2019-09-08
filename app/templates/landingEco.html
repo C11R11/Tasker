@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "head.html" %}
+
+<body>
+    <style>
+        .vertical-center {
+            min-height: 100%;
+            /* Fallback for browsers do NOT support vh unit */
+            min-height: 100vh;
+            /* These two lines are counted as one :-)       */
+
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item">
+                    <a class="btn btn-light btn-sm" href="/" role="button">Volver a Tasker</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center" style="height: 100vh">
+        <div class="container">
+            <h1 class="display-4">Ecosistema</h1>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-light text-dark text-center vertical-center">
+        <div class="container text-dark">
+            <h4 class="display-4 text-xs-center pb-1 mb-1">Productos principales</h4>
+            <p class="lead m-5">
+                El ecosistema de tareas comprende una serie de productos. Cada uno de ellos brindan 
+                una mirada complementaria en busca de brindar un servicio coorporativo de ejecución, 
+                administración y apoyo a la toma de decisiones.
+            </p>
+            <div class="card-deck mb-3 text-center container-fluid">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Tasker</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Ejecución de comandos y tareas en la nube</li>
+                            <li>Aumento de productividad operativa</li>
+                            <li>Colaboración entre usuarios</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Orchest</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Automatiza tareas colaborativas</li>
+                                <li>Posibilita trabajos multidisciplinarios</li>
+                                <li>Mejora en productividad colaborativa</li>
+                            </ul>
+                        </div>
+                </div>
+                <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Commander</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Completo monitoreo de tareas y workflows</li>
+                                <li>Análisis de data generada</li>
+                                <li>Apoyo en toma de decisiones</li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+
+            <hr class="featurette-divider my-3">
+            <h4 class="display-4 text-xs-center pt-1 mt-5">Productos complementarios</h4>
+            <p class="lead m-5">
+                Con el fin de brindar apoyo a nuevos usos de las funcionalidades de este ecosistema se 
+                definen una serie de productos complementarios.
+            </p>
+            <div class="card-deck mb-3 text-center container-fluid">
+                    <div class="card mb-4">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Rest API</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">
+                                    <small class="text-muted">
+                                        Punto web de acceso a funcionalidades 
+                                    </small>
+                                </h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>Acceso a ejecución de tareas</li>
+                                    <li>Acceso por interfaz web simple y disponible</li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center">
+        <div class="container text-dark">
+            <h1 class="display-4 my-5 text-light">Sección dark</h1>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-light text-dark text-center vertical-center">
+            <div class="container ">
+                <h1 class="display-4 my-5 text-dark">Sección light</h1>
+            </div>
+        </div>
+
+</body>
+<footer class="footer mt-auto py-3 container">
+    <div class="container">
+        <p class="float-right">
+            <a href="#">Arriba</a>
+        </p>
+        <p>&copy; 2019</p>
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "head.html" %}
+
+<body>
+    <style>
+        .vertical-center {
+            min-height: 100%;
+            /* Fallback for browsers do NOT support vh unit */
+            min-height: 100vh;
+            /* These two lines are counted as one :-)       */
+
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item">
+                    <a class="btn btn-light btn-sm" href="/login" role="button">Ingresar</a>
+                    <a class="btn btn-success btn-sm" href="/landingEco" role="button">Ecosistema</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center" style="height: 100vh">
+        <div class="container">
+            <h1 class="display-4">Tasker</h1>
+            <p class="lead">Bienvenido a la plataforma de ejecución de tareas.</p>
+            <p class="lead">
+                <a class="btn btn-light btn-lg" href="/login" role="button">Ingresar</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h1 class="display-1 text-xs-center pb-1 mb-1">Sistema de tareas</h1>
+        <p class="lead">
+            La plataforma de tareas consiste en una serie de funcionalidades y servicios que permiten
+            a los usuarios principalmente facilitar sus ciclos productivos y de análisis de resultados
+            consolidados.
+        </p>
+        <hr class="featurette-divider my-3">
+        <h3 class="display-4">Productividad</h3>
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Potencia</h2>
+                <p class="lead">Nuestra infraestructura permite ejecutar tareas <b>al menos en la mitad del tiempo</b> que en un computador personal.</p>
+                <h2 class="featurette-heading">Disponibilidad 24/7</h2>
+                <p class="lead">Sistema web completamente autónomo de alta disponibilidad. Usted podrá
+                    utilizarlo cuando lo estime conveniente.</p>
+                <h2 class="featurette-heading">Respaldo de información</h2>
+                <p class="lead">La información de sus proyectos se mantendrá a resguardo, segurizada y
+                    confidencial para nuestros usuarios.</p>
+                <h2 class="featurette-heading">Auditoría</h2>
+                <p class="lead">Puede revisar completamente cada tarea realizada, rehacerla y revisar
+                    resultados cuando sea necesario.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src={{ url_for('static', filename='cloud.png')}} class="rounded mx-auto d-block" stle="padding-left: 0;
+                    padding-right: 0;">
+            </div>
+        </div>
+        <hr class="featurette-divider my-3">
+        <h3 class="display-4 text-center">Operatividad</h3>
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Tareas conjuntas</h2>
+                <p class="lead">A través de la plataforma se puede coordinar, ejecutar y compartir resultados. También
+                    es posible coordinar proyectos de equipos distribuidos geográficamente.</p>
+                <h2 class="featurette-heading">Reportabilidad</h2>
+                <p class="lead">Es posible compartir resultados a jefaturas directas a través de la plataforma.</p>
+            </div>
+            <div class="col-md-5">
+                <img src={{ url_for('static', filename='operativity.jpg')}} class="rounded mx-auto d-block" stle="padding-left: 0;
+                        padding-right: 0;">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center">
+        <div class="container text-dark">
+            <h1 class="display-4 my-5 text-light">Acceso a la plataforma</h1>
+            <div class="card-deck mb-3 text-center container-fluid">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Personal</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$xxxxxxx <small class="text-muted">/ mes</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Sólo una tarea en ejecución al mismo tiempo</li>
+                            <li>Ejecución de tareas en pool común</li>
+                            <li>Alertas y notificaciones</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Equipo o campaña</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$xxxxxxx <small class="text-muted">/ mes</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Acceso a grupo común de ejecución de tareas</li>
+                            <li>Generación de flujos de trabajo colaborativo</li>
+                            <li>Acceso a historial de tareas</li>
+                            <li>Alertas y notificaciones</li>
+                            <li>Acceso temprano a nuevas funcionalidades</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Corporativo</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$XXXXXX <small class="text-muted">/ mes</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Acceso a grupo común de ejecución de tareas</li>
+                            <li>Generación de flujos de trabajo colaborativo</li>
+                            <li>Acceso a historial de tareas</li>
+                            <li>Alertas y notificaciones</li>
+                            <li>Acceso a funcionalidades exclusivas</li>
+                            <li>Reportabilidad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-light text-dark text-center vertical-center">
+        <div class="container ">
+            <h1 class="display-4 my-5 text-dark">Colaboración</h1>
+            <img src={{ url_for('static', filename='workflow.png')}}>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center">
+        <div class="container text-dark">
+            <h1 class="display-4 my-5 text-light">Sección dark</h1>
+        </div>
+    </div>
+
+</body>
+<footer class="footer mt-auto py-3 container">
+    <div class="container">
+        <p class="float-right">
+            <a href="#">Arriba</a>
+        </p>
+        <p>Plataforma de ejecución remota de tareas. &copy; 2019</p>
+    </div>
+</footer>
+
+</html>
