@@ -28,11 +28,59 @@
 
     <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center" style="height: 100vh">
         <div class="container">
-            <h1 class="display-4">Ecosistema</h1>
+            <h1 class="display-4">Ecosistema corporativo</h1>
+            <p class="lead m-5">
+                    El ecosistema tiene como objetivo la búsqueda de soluciones a <b>nivel corporativo</b>.
+                    De esta forma busca unir la brecha entre usuarios operativos, coordinación y toma de decisiones
+                    corporativa.
+                </p>
         </div>
     </div>
 
-    <div class="jumbotron jumbotron-fluid m-0 bg-light text-dark text-center vertical-center">
+    <div class="container my-5">
+            <h1 class="display-1 text-xs-center pb-1 mb-1">Características de valor</h1>
+            <hr class="featurette-divider my-3">
+            <h3 class="display-4">Operatividad</h3>
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Tareas conjuntas</h2>
+                    <p class="lead">A través de la plataforma se puede coordinar, ejecutar y compartir resultados. También
+                        es posible coordinar proyectos de equipos distribuidos geográficamente.</p>
+                    <h2 class="featurette-heading">Reportabilidad</h2>
+                    <p class="lead">Es posible compartir resultados a jefaturas directas a través de la plataforma.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src={{ url_for('static', filename='operativity.jpg')}} class="rounded mx-auto d-block" stle="padding-left: 0;
+                            padding-right: 0;">
+                </div>
+                
+            </div>
+            <div class="jumbotron jumbotron-fluid mt-3 bg-white text-dark text-center">
+                    <div class="container-fluid">
+                        <img src={{ url_for('static', filename='workflow.png')}}>
+                    </div>
+                </div>
+        
+                <hr class="featurette-divider mt-5">
+        <h3 class="display-4">Toma de decisiones</h3>
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Gráficos de avance</h2>
+                <p class="lead">Obtención de gráficos de avance a partir de un conjunto de tareas a partir de
+                    dimensiones de datos requerida. Por ejemplo, gráfico de tonelaje contra ejecución de cierta tarea
+                    ejecutada en el tiempo con datos actualizados.</p>
+                <h2 class="featurette-heading">Inteligencia artificial</h2>
+                <p class="lead">LObtención de metadata a partir de análisis del trabajo en la plataforma por su empresa.
+                    Aplicación de técnicas de minería de datos, machine learning y otros.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src={{ url_for('static', filename='decision.jpg')}} class="rounded mx-auto d-block" stle="padding-left: 0;
+                        padding-right: 0;">
+            </div>
+        </div>
+        </div>
+    
+        <div class="jumbotron jumbotron-fluid m-0 bg-light text-dark text-center vertical-center">
         <div class="container text-dark">
             <h4 class="display-4 text-xs-center pb-1 mb-1">Productos principales</h4>
             <p class="lead m-5">
@@ -40,7 +88,7 @@
                 una mirada complementaria en busca de brindar un servicio coorporativo de ejecución, 
                 administración y apoyo a la toma de decisiones.
             </p>
-            <div class="card-deck mb-3 text-center container-fluid">
+            <div class="card-columns mb-3 text-center container-fluid">
                 <div class="card mb-4">
                     <div class="card-header">
                         <h4 class="my-0 font-weight-normal">Tasker</h4>
@@ -85,17 +133,12 @@
                 Con el fin de brindar apoyo a nuevos usos de las funcionalidades de este ecosistema se 
                 definen una serie de productos complementarios.
             </p>
-            <div class="card-deck mb-3 text-center container-fluid">
-                    <div class="card mb-4">
+            <div class="card-columns mb-3 text-center container-fluid">
+                    <div class="card mb-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">Rest API</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title">
-                                    <small class="text-muted">
-                                        Punto web de acceso a funcionalidades 
-                                    </small>
-                                </h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>Acceso a ejecución de tareas</li>
                                     <li>Acceso por interfaz web simple y disponible</li>
@@ -107,12 +150,12 @@
 
         </div>
     </div>
-
+    
     <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light text-center vertical-center">
-        <div class="container text-dark">
-            <h1 class="display-4 my-5 text-light">Sección dark</h1>
+            <div class="container text-dark">
+                <h1 class="display-4 my-5 text-light">Sección dark</h1>
+            </div>
         </div>
-    </div>
 
     <div class="jumbotron jumbotron-fluid m-0 bg-light text-dark text-center vertical-center">
             <div class="container ">
