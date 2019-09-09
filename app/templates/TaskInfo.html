@@ -46,6 +46,8 @@
           <b>Fecha solicitada:</b> {{task["creation"]}}<br />
           <b>Creada por:</b> {{task["user"]}}</p>
         {%endif%}
+        
+        <a class="my-3 btn btn-primary btn-block" href="{{ url_for('static', filename=taskJob.GetZipFilename()) }}">Descargar todos los archivos</a>
 
           <div class="row">
             {{widget | safe}}

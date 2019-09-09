@@ -9,6 +9,7 @@ class Task:
         self.taskId = taskId
         self.taskrepo = taskrepo
         self.SourceData = json.loads(self.taskrepo.GetTask(self.taskId))
+        self.outPath = os.path.join(os.getcwd(), ResultsSimpleFilePath,  self.taskId , "out")
         if (self.SourceData == ""):
             print ("la tarea no ha sido creada aun")
     
@@ -18,9 +19,7 @@ class Task:
         return False
     
     def GetAllFilesInput(self):
-        #print("Current Working Directory " , os.getcwd())
         path = os.path.join(os.getcwd(), ResultsSimpleFilePath,  self.taskId , "in")
-        #print(path)
         list_of_files = []
         for filename in os.listdir(path):
             filename = os.path.join("results", self.taskId, "in",filename)
@@ -29,12 +28,15 @@ class Task:
         return list_of_files
 
     def GetAllFilesOutput(self):
-        print("Current Working Directory " , os.getcwd())
-        path = os.path.join(os.getcwd(), ResultsSimpleFilePath,  self.taskId , "out")
-        print(path)
         list_of_files = []
-        for filename in os.listdir(path):
+        for filename in os.listdir(self.outPath):
             filename = os.path.join("results", self.taskId, "out",filename)
             filename = "/".join(filename.split(os.path.sep))
             list_of_files.append(filename)
         return list_of_files
+    
+    def GetZipFilename(self):
+        self.zipFileName = "files_" + self.taskId + ".zip"
+        filename = os.path.join("results", self.taskId, "out",self.zipFileName)
+        filename = "/".join(filename.split(os.path.sep))
+        return filename
