@@ -2,7 +2,6 @@ from . import test_tasks_blueprint
 from flask import current_app as app
 from flask import Flask, render_template, request, redirect, url_for
 import os
-from jobs_core.TaskRepo import TaskRepo
 from jobs_core.TaskJob import TaskJob
 from jobs_core.utils import SendEmail
 
@@ -14,8 +13,7 @@ def newTaskSleep():
         uploaded_files = request.files.getlist("file[]")
         print (uploaded_files)
 
-        taskRepo = TaskRepo(app.config["BdNameConnection"])
-        taskjob = TaskJob(request.form['nombretarea'], taskRepo, uploaded_files)
+        taskjob = TaskJob(request.form['nombretarea'], app.config["TaskRepo"], uploaded_files)
         taskjob.SetEmailConfiguration(app.config["EmailServerLogin"], 
                                     app.config["EmailServerLoginPass"],
                                     app.config["EmailSender"],

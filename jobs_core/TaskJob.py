@@ -12,10 +12,11 @@ class TaskJob:
         self.taskId = self.taskrepo.CreateTaskJob(taskname)
         self.JobInitialized = False
         self.JobFinished = False
-        self.PrintJobStatus()
         self.IsEmailConfigured = False
         self.UploadedFiles = uploaded_files
         self.filesPaths = []
+        self.zipName = "files_" + self.taskId
+        self.zipFileName = self.zipName + ".zip"
 
     def GetJobId(self):
         return self.taskId
@@ -26,14 +27,11 @@ class TaskJob:
     def TheJobHasFinished(self):
         return self.JobFinished
     
-    def PrintJobStatus(self):
-        print("self.JobInitialized->", self.JobInitialized)
-        print("self.JobFinished->", self.JobFinished)
-
     def StartTask(self, pathNameBase, exe):
         self.pathNameBase = pathNameBase
         self.pathNameOut = os.path.join(self.pathNameBase, "out")
         self.pathNameIn = os.path.join(self.pathNameBase, "in")
+        self.compressPath = os.path.join(self.pathNameBase, self.zipName)
         self.exe = exe
         self.JobInitialized = True
 
@@ -54,7 +52,7 @@ class TaskJob:
         taskOutput = "<br />".join(output.split("\n"))
         self.taskrepo.FinishJob(self.taskId, taskOutput)
         self.JobFinished = True
-
+        self.MakeCompressFiles()
         self.CopyOutFilesToIn()
 
         WriteLog(self.pathNameOut, output)
@@ -82,3 +80,25 @@ class TaskJob:
         os.mkdir(self.pathNameBase)
         os.mkdir(self.pathNameIn)
         os.mkdir(self.pathNameOut)
+        os.mkdir(self.compressPath)
+    
+    def MakeCompressFiles(self):
+        f = []
+        for (dirpath, dirnames, filenames) in os.walk(self.pathNameOut):
+            for pathname in filenames:
+                f.append(os.path.join(dirpath,pathname))
+
+        for pathname in f:
+            shutil.copy(pathname, self.compressPath)
+
+        self.MakeZipFile(self.compressPath, os.path.join(self.pathNameOut, self.zipFileName))
+        shutil.rmtree(self.compressPath)
+
+    def MakeZipFile(self, source, destination):
+        base = os.path.basename(destination)
+        name = base.split('.')[0]
+        format = base.split('.')[1]
+        archive_from = os.path.dirname(source)
+        archive_to = os.path.basename(source.strip(os.sep))
+        shutil.make_archive(name, format, archive_from, archive_to)
+        shutil.move('%s.%s'%(name,format), destination)
