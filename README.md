@@ -27,4 +27,7 @@ How to run it:
     flask run
 
 [Instalar la extensión linux para windows para solo tener que utilizar comandos unix](https://evdokimovm.github.io/windows/zsh/shell/syntax/highlighting/ohmyzsh/hyper/terminal/2017/02/24/how-to-install-zsh-and-oh-my-zsh-on-windows-10.html)
-![imagen](https://github.com/C11R11/Tasker/blob/master/IMG_3463.jpg)
+
+#Contexto y ecosistema
+
+![imagen](https://drive.google.com/file/d/1ciHv1blvvDN5u5u4Uph2kBTmAlaNyqYm/view?usp=sharing)
