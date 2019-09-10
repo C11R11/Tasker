@@ -30,4 +30,4 @@ How to run it:
 
 #Ecosistema 
 
-![imagen](https://drive.google.com/file/d/1ciHv1blvvDN5u5u4Uph2kBTmAlaNyqYm/view?usp=sharing)
+![imagen](https://drive.google.com/file/d/1ciHv1blvvDN5u5u4Uph2kBTmAlaNyqYm/view)
