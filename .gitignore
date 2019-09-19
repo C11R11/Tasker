@@ -3,3 +3,4 @@ __pycache__
 env
 my_database.sqlite
 envTasker
+node_modules

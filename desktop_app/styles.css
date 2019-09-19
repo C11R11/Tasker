@@ -1,0 +1,105 @@
+body {
+    background-color: #222233;
+    color: #AACCFF;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 10px;
+    height: 150px;
+    width: 500px;
+    overflow:hidden;
+    -webkit-app-region: drag;
+    overflow: auto;
+}
+
+.cuadroTarea
+{
+  margin-bottom: 5px;
+  height: 70px;
+  position: relative;
+  border: 1px dashed silver;
+}
+
+.topLeft
+{
+  float:left;
+  height: 10px;
+  border: 1px dashed silver;
+  height: 15px;
+  width: 244px;
+  padding-left: 5px;
+}
+
+.topRight
+{
+  height: 10px;
+  border: 1px dashed silver;
+  width: 244px;
+  margin-left: 50%;
+  height: 15px;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.bottomLeft
+{
+  height: 10px;
+  position: absolute;
+  margin-top: 35px;
+  height: 15px;
+  border: 1px dashed silver;
+  width: 244px;
+  padding-left: 5px;
+}
+
+.bottomRight
+{
+  height: 10px;
+  position: absolute;
+  float: right;
+  margin-top: 35px;
+  margin-left: 50%;
+  height: 15px;
+  width: 244px;
+  text-align: right;
+  padding-right: 5px;
+  border: 1px dashed silver;
+}
+
+.centerLeft
+{
+  float:left;
+  height: 30px;
+
+  width: 23%;
+  border: 1px dashed silver;
+}
+
+.center
+{
+  height: 30px;
+  float:left;
+  width: 100%;
+  border: 1px dashed silver;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.centerRight
+{
+  float:right;
+  height: 30px;
+  width: 23%;
+  border: 1px dashed silver;
+}
+
+.tareaTerminada
+{
+    background-color: green;
+    color: black;
+
+}
+
+.tareaPendiente
+{
+    background-color: orange;
+    color: orangered;
+}

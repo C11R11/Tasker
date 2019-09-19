@@ -15,13 +15,11 @@ How to set an environment:
 How to run it:
 
     #Unix
-    export FLASK_APP="run.py"
-    export FLASK_ENV="development"
-    export FLASK_DEBUG=1
-    flask run --host 0.0.0.0 --port 1111
+    export FLASK_APP="run.py"; export FLASK_ENV="development"; export FLASK_DEBUG=1; flask run --host 0.0.0.0 --port 1111
+    export FLASK_APP="runApi.py"; export FLASK_ENV="development"; export FLASK_DEBUG=1; flask run --host 0.0.0.0 --port 2222
     
     #Windows (Powershell)
-    $env:FLASK_APP="run.py"
+    $env:FLASK_APP="run.py"; 
     $env:FLASK_ENV="development"
     $env:FLASK_DEBUG=1
     flask run
