@@ -1,4 +1,21 @@
 let request = require('request');
+window.$ = window.jQuery = require('jquery');
+
+$(document).ready(function () {
+    $("#myInput").on("keyup", function () {
+        var value = $(this).val();
+        $(".cuadroTarea").each(function () {
+
+            if ($(this).text().match(value)) {
+                $(this).show();
+            }
+            else {
+                $(this).hide();
+            }
+
+        });
+    });
+});
 
 function makeRequest()
 {

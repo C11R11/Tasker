@@ -3,11 +3,29 @@ body {
     color: #AACCFF;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     font-size: 10px;
-    height: 150px;
-    width: 500px;
-    overflow:hidden;
+    height: 300px;
+    width: 300px;
     -webkit-app-region: drag;
-    overflow: auto;
+}
+
+#quote
+{
+  width: 300px;
+  height: 303px;
+  overflow: auto;
+}
+
+#myInput
+{
+  width: 295px;
+}
+
+div.stickysearch
+{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  margin-bottom: 5px;
 }
 
 .cuadroTarea

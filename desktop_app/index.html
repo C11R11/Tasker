@@ -4,31 +4,12 @@
     <meta charset="UTF-8">
     <title>Quote Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val();
-            $(".cuadroTarea").each(function () {
-
-                if ($(this).text().match(value)) {
-                    $(this).show();
-                }
-                else {
-                    $(this).hide();
-                }
-
-            });
-        });
-    });
-</script>
-
   </head>
   <body>
+      <div class="stickysearch">
+          <input type="text" aria-label="Search" id="myInput" placeholder="Buscar una tarea en particular....">
+      </div>
     <div id="quote">
-      <div id="search">
-        <input type="text" class="form-control form-control-dark" type="text" aria-label="Search" id="myInput" placeholder="Buscar una tarea en particular....">
-      </search>
     <div id="e757f7e575" class="cuadroTarea tareaTerminada" e757f7e575="">
       <div class="topLeft"> Tarea clave1</div>
       <div class="topRight"> Terminada</div>

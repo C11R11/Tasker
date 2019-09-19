@@ -15,7 +15,7 @@ function createWindow() {
     //width: 500,
     //frame: false,
     height: 600,
-    width: 600,
+    width: 1000,
     frame: true,
     show: false
   });
