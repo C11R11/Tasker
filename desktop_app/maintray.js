@@ -35,12 +35,13 @@ const getWindowPosition = () => {
 const createWindow = () => {
   window = new BrowserWindow({
     width: 320,
-    height: 450,
+    height: 400,
     show: false,
     frame: false,
     fullscreenable: false,
     resizable: false,
     transparent: false,
+    backgroundColor: 'white',
     webPreferences: {
       backgroundThrottling: false
     }
