@@ -18,6 +18,7 @@ body {
 #myInput
 {
   width: 295px;
+  border-radius: 4px;
 }
 
 div.stickysearch
@@ -33,24 +34,24 @@ div.stickysearch
   margin-bottom: 5px;
   height: 70px;
   position: relative;
-  border: 1px dashed silver;
+  
 }
 
 .topLeft
 {
   float:left;
   height: 10px;
-  border: 1px dashed silver;
+  
   height: 15px;
-  width: 244px;
+  width: 143px;
   padding-left: 5px;
 }
 
 .topRight
 {
   height: 10px;
-  border: 1px dashed silver;
-  width: 244px;
+  
+  width: 143px;
   margin-left: 50%;
   height: 15px;
   text-align: right;
@@ -61,10 +62,10 @@ div.stickysearch
 {
   height: 10px;
   position: absolute;
-  margin-top: 35px;
+  margin-top: 41px;
   height: 15px;
-  border: 1px dashed silver;
-  width: 244px;
+  
+  width: 143px;
   padding-left: 5px;
 }
 
@@ -73,13 +74,13 @@ div.stickysearch
   height: 10px;
   position: absolute;
   float: right;
-  margin-top: 35px;
+  margin-top: 41px;
   margin-left: 50%;
   height: 15px;
-  width: 244px;
+  width: 143px;
   text-align: right;
   padding-right: 5px;
-  border: 1px dashed silver;
+  
 }
 
 .centerLeft
@@ -88,7 +89,7 @@ div.stickysearch
   height: 30px;
 
   width: 23%;
-  border: 1px dashed silver;
+  
 }
 
 .center
@@ -96,7 +97,7 @@ div.stickysearch
   height: 30px;
   float:left;
   width: 100%;
-  border: 1px dashed silver;
+  
   text-align: center;
   vertical-align: middle;
 }
@@ -106,18 +107,27 @@ div.stickysearch
   float:right;
   height: 30px;
   width: 23%;
-  border: 1px dashed silver;
+  
 }
 
 .tareaTerminada
 {
-    background-color: green;
-    color: black;
+    background-color: cadetblue;
+    color: darkslategrey;
 
 }
 
 .tareaPendiente
 {
-    background-color: orange;
-    color: orangered;
+    background-color: wheat;
+    color: darkslategrey;
+}
+
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  color: initial;
 }
