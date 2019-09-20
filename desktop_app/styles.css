@@ -1,6 +1,4 @@
 body {
-    background-color: #222233;
-    color: #AACCFF;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     font-size: 10px;
     height: 300px;
@@ -10,6 +8,8 @@ body {
 
 #quote
 {
+  background-color: #222233;
+  color: #AACCFF;
   width: 300px;
   height: 303px;
   overflow: auto;

@@ -53,7 +53,7 @@ function makeRequest()
 }
 
 makeRequest();
-/*
+
 setInterval(function(){
     makeRequest();
-}, 5000);*/
+}, 5000);

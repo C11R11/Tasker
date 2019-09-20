@@ -11,14 +11,14 @@ let win;
 function createWindow() {
 
   win = new BrowserWindow({
-    //height: 150,
-    //width: 500,
+    height: 150,
+    width: 500,
     //frame: false,
-    height: 600,
-    width: 1000,
     frame: true,
     show: false
   });
+
+  win.maximize()
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
