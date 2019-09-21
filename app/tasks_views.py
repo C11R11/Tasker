@@ -32,6 +32,12 @@ def taskStatus(tasknewID):
     taskJob = Task(tasknewID, app.config["TaskRepo"])
     return StatusOfTheTask(taskInfo, taskJob)
 
+@app.route("/taskStatusDesktop/<tasknewID>")
+def taskStatusDesktop(tasknewID):
+    taskInfo = json.loads(app.config["TaskRepo"].GetTask(tasknewID))
+    taskJob = Task(tasknewID, app.config["TaskRepo"])
+    return render_template('TaskInfoDesktop.html',  task=taskInfo, widget=GetWidgetForTask(taskInfo["ID"]), taskJob=taskJob)
+
 @app.route("/catalogue")
 def catalogue():
     return render_template('catalogue.html')

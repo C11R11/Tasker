@@ -4,30 +4,49 @@ body {
     height: 300px;
     width: 300px;
     -webkit-app-region: drag;
+    padding: 0px;
+    margin: 0px;
+}
+
+html
+{
+  padding: 0px;
+  margin: 0px;
 }
 
 #quote
 {
   /*background-color: #222233;*/
-  color: #AACCFF;
+  color: darkslategrey;
   width: 300px;
-  height: 303px;
+  height: 296px;
   overflow: auto;
 }
 
 #trayHeader
 {
-  background-color: white;
+  background-color: #d7d7cb;
   color: darkslategrey;
-  width: 298px;
-  height: 50px;
+  width: 290px;
+  height: 37px;
   border-bottom: 1px silver;
-  padding: 5px 0;
+  padding: 5px;
+  padding-top: 10px;
+}
+
+#trayFooter
+{
+  background-color:#d7d7cb;
+  color: darkslategrey;
+  width: 290px;
+  height: 13px;
+  border-bottom: 1px silver;
+  padding: 5px;
 }
 
 #myInput
 {
-  width: 295px;
+  width: 285px;
   /*border-radius: 4px;*/
 }
 
@@ -42,16 +61,17 @@ div.stickysearch
 .cuadroTarea
 {
   margin-bottom: 5px;
-  height: 70px;
+  height: 40px;
   position: relative;
-  
+  padding: 7px 0;
+  border-bottom: 1px solid #d7d7cb;
+
 }
 
 .topLeft
 {
   float:left;
   height: 10px;
-  
   height: 15px;
   width: 143px;
   padding-left: 5px;
@@ -72,7 +92,7 @@ div.stickysearch
 {
   height: 10px;
   position: absolute;
-  margin-top: 41px;
+  margin-top: 10px;
   height: 15px;
   
   width: 143px;
@@ -84,7 +104,7 @@ div.stickysearch
   height: 10px;
   position: absolute;
   float: right;
-  margin-top: 41px;
+  margin-top: 10px;
   margin-left: 50%;
   height: 15px;
   width: 143px;
@@ -122,22 +142,27 @@ div.stickysearch
 
 .tareaTerminada
 {
-    background-color: cadetblue;
-    color: darkslategrey;
-
+    background-color: green;
+    color: lightcyan;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-weight: bold;
 }
 
 .tareaPendiente
 {
-    background-color: wheat;
-    color: darkslategrey;
+    background-color: lightgray;
+    color: darkblue;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-weight: bold;
 }
 
 a.button {
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
-
+  padding: 2px 4px;
   text-decoration: none;
   color: initial;
 }

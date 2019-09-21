@@ -1,7 +1,7 @@
 {
   "name": "hello-world",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "maintray.js",
   "devDependencies": {
     "electron": "^1.6.11"
   },

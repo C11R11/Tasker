@@ -2,7 +2,7 @@ let request = require('request');
 const { shell } = require('electron')
 window.$ = window.jQuery = require('jquery');
 
-shell.openExternal('http://google.cl');
+//shell.openExternal('http://google.cl');
 
 $(document).ready(function () {
     $("#myInput").on("keyup", function () {
@@ -39,12 +39,12 @@ function makeRequest()
             classStatus = "tareaTerminada";
         }
 
-        randomQuote += "<div id ='" + task["ID"] + "' class='cuadroTarea " + classStatus + "'>";
-        randomQuote += "<div class='topLeft'>" + task["name"] + "</div>";
-        randomQuote += "<div class='topRight'>"  + task["estado"] + "</div>";
+        randomQuote += "<div id ='" + task["ID"] + "' class='cuadroTarea'>";
+        randomQuote += "<div class='topLeft'>" + task["name"] +  "&nbsp;&nbsp;<a href='http://127.0.0.1:1111/taskStatusDesktop/" + task["ID"] + "' target='_blank' class='button'>Ver detalle</a></div>";
+        randomQuote += "<div class='topRight'><span class='" + classStatus + "'>"+ task["estado"] + "</span></div>";
         randomQuote += "<div class='bottomLeft'>ID "  + task["ID"] + "</div>";
         randomQuote += "<div class='bottomRight'>Creación: "  + task["creation"] + "</div>";
-        randomQuote += "<div class='center'>blabla <br><a href=javascript:OpenExternal('http://127.0.0.1:1111/taskStatus/" + task["ID"] + "') target='_blank' class='button'>Ver detalle</a><button> ver detalle </button></div>";
+        //randomQuote += "<div class='center'><a href='http://127.0.0.1:1111/taskStatusDesktop/" + task["ID"] + "' target='_blank' class='button'>Ver detalle</a></div>";
         randomQuote += "</div>";
     });
 
