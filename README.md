@@ -29,7 +29,7 @@ How to run it (python):
     cd desktop_app
     npm install
     
- How to run it (python):
+ How to run it (nodejs):
 
     npm start    
 
