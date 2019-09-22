@@ -1,6 +1,6 @@
 # Tasker
 
-How to set an environment:
+How to set an environment (python):
 
     #Unix/mac
     python3 -m venv env
@@ -12,7 +12,7 @@ How to set an environment:
     env/Scripts/activate.bat
     pip install -r requirements.txt
 
-How to run it:
+How to run it (python):
 
     #Unix
     export FLASK_APP="run.py"; export FLASK_ENV="development"; export FLASK_DEBUG=1; flask run --host 0.0.0.0 --port 1111
@@ -23,6 +23,15 @@ How to run it:
     $env:FLASK_ENV="development"
     $env:FLASK_DEBUG=1
     flask run
+ 
+ How to set an environment (nodejs):
+ 
+    cd desktop_app
+    npm install
+    
+ How to run it (python):
+
+    npm start    
 
 [Instalar la extensión linux para windows para solo tener que utilizar comandos unix](https://evdokimovm.github.io/windows/zsh/shell/syntax/highlighting/ohmyzsh/hyper/terminal/2017/02/24/how-to-install-zsh-and-oh-my-zsh-on-windows-10.html)
 
