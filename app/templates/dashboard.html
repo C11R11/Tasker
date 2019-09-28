@@ -25,9 +25,20 @@
 
 <main role="main" class="col-sm-12 col-md-9 ml-sm-auto col-lg-10 px-3 text-center">
 
-    <div class="text-left">
-        <a class="" href="/test_tasks/newtaskForm" role="button">Crear nueva tarea test</a>
-    </div>  
+    <div class="alert alert-warning w-80 alert-dismissible fade show mt-2 text-left" role="alert">
+        <h4 class="alert-heading">Dashboard de tareas</h4>
+        <p>Acá se desplegarán todas las tareas <span class="badge badge-pill badge-success"><small>Terminadas</small></span> y 
+            <span class="badge badge-pill badge-warning"><small>Ejecutandose</small></span></span> </p>
+        <hr>
+        <div class="alert alert-primary" role="alert">
+            Al hacer click en el botón "Reporte" de cada tarea se puede acceder al resumen de la tarea terminada.
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+
+      <input type="text" class="form-control form-control-dark mt-2" type="text" aria-label="Search" id="myInput" placeholder="Buscar una tarea en particular....">  
     <!--<input type="text" class="form-control form-control-lg" id="myInput" placeholder="Buscar una tarea en particular....">-->
 
     <!--<ul class="list-group list-group-flush">-->

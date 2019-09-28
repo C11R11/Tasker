@@ -11,8 +11,8 @@ let win;
 function createWindow() {
 
   win = new BrowserWindow({
-    width: 320,
-    height: 450,
+    width: 360,
+    height: 480,
     //frame: false,
     frame: true,
     show: false
