@@ -23,6 +23,9 @@ How to run it (python):
     $env:FLASK_ENV="development"
     $env:FLASK_DEBUG=1
     flask run
+    
+ How to update requirements:
+    pip freeze > requirements.txt
  
  How to set an environment (nodejs):
  
