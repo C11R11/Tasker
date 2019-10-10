@@ -5,13 +5,13 @@ from jobs_core.Task import Task
 
 @app.route("/dashboard")
 def dashboard():
-    allTasks = json.loads(app.config["TaskRepo"].GetTasks())
+    allTasks = json.loads(app.config["REPO"].GetTasks())
     tasks_render = []
     if allTasks == []:
         return render_template('emptyList.html')
     else:
         for taskInfo in allTasks:
-            taskJob = Task(taskInfo["ID"], app.config["TaskRepo"])
+            taskJob = Task(taskInfo["ID"], app.config["REPO"])
             badge = "warning"
             if taskJob.IsAFinishedTask():
                 badge = "success"
@@ -28,14 +28,14 @@ def GetWidgetForTask(id):
 
 @app.route("/taskStatus/<tasknewID>")
 def taskStatus(tasknewID):
-    taskInfo = json.loads(app.config["TaskRepo"].GetTask(tasknewID))
-    taskJob = Task(tasknewID, app.config["TaskRepo"])
+    taskInfo = json.loads(app.config["REPO"].GetTask(tasknewID))
+    taskJob = Task(tasknewID, app.config["REPO"])
     return StatusOfTheTask(taskInfo, taskJob)
 
 @app.route("/taskStatusDesktop/<tasknewID>")
 def taskStatusDesktop(tasknewID):
-    taskInfo = json.loads(app.config["TaskRepo"].GetTask(tasknewID))
-    taskJob = Task(tasknewID, app.config["TaskRepo"])
+    taskInfo = json.loads(app.config["REPO"].GetTask(tasknewID))
+    taskJob = Task(tasknewID, app.config["REPO"])
     return render_template('TaskInfoDesktop.html',  task=taskInfo, widget=GetWidgetForTask(taskInfo["ID"]), taskJob=taskJob)
 
 @app.route("/catalogue")

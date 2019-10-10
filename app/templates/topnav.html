@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top {{config['COLOR_BACKGROUND_CLASS']}}">
     <a class="navbar-brandmr-5 text-center mr-5" href="/dashboard">
       <img src={{ url_for('static', filename='logo.png')}} class="user-logo" alt="User Image">
     </a>
@@ -9,6 +9,9 @@
     
     <input type="text" class="form-control form-control-dark" type="text" aria-label="Search" id="myInput" placeholder="Buscar una tarea en particular....">      
     <ul class="navbar-nav px-3">
+
+        <b class="display-5">TASKER</b>
+
       <li class="nav-item active dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <img src={{ url_for('static', filename='avatar.png')}} class="user-image" alt="User Image">

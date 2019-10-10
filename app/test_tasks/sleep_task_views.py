@@ -13,11 +13,11 @@ def newTaskSleep():
         uploaded_files = request.files.getlist("file[]")
         print (uploaded_files)
 
-        taskjob = TaskJob(request.form['nombretarea'], app.config["TaskRepo"], uploaded_files)
-        taskjob.SetEmailConfiguration(app.config["EmailServerLogin"], 
-                                    app.config["EmailServerLoginPass"],
-                                    app.config["EmailSender"],
-                                    app.config["EmailList"])
+        taskjob = TaskJob(request.form['nombretarea'], app.config["REPO"], uploaded_files)
+        taskjob.SetEmailConfiguration(app.config["EMAIL_SERVER_LOGIN"], 
+                                    app.config["EMAIL_SERVER_LOGIN_PASS"],
+                                    app.config["EMAIL_SENDER"],
+                                    app.config["RESULTS_SIMPLE_FILE_PATH"])
         pathName = os.path.join(os.getcwd(), 'app', 'static', 'results', taskjob.GetJobId())
         exe = "python " + os.path.join(os.getcwd(), 'app', 'executables', 'SleepTaskTest.py ' + str(segs))
         taskjob.StartTask(pathName, exe)

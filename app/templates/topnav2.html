@@ -1,29 +1,30 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top {{config['COLOR_BACKGROUND_CLASS']}}">
     <!--<a class="navbar-brandmr-5 text-center mr-5" href="/dashboard">
         <img src={{ url_for('static', filename='logo.png')}} class="user-logo" alt="User Image">
       </a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+  <div class="collapse navbar-collapse " id="navbarCollapse">
       <ul class="navbar-nav bd-navbar-nav flex-row mr-auto">
-          <li class="nav-item">
-             <a class="nav-link" id="navDashboard" href="/dashboard">Dashboard</a>
+          <li class="nav-item ">
+             <a class="nav-link {{config['COLOR_TEXT_CLASS']}}" id="navDashboard" href="/dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link active" id="navNewTask" href="/test_tasks/newtaskForm">Nueva tarea</a>
+              <a class="nav-link active {{config['COLOR_TEXT_CLASS']}}" id="navNewTask" href="/test_tasks/newtaskForm">Nueva tarea</a>
           </li>
         </ul>
     <!--<input type="text" class="form-control form-control-dark" type="text" aria-label="Search" id="myInput" placeholder="Buscar una tarea en particular...."> -->
+    <b class="display-5 {{config['COLOR_TEXT_CLASS']}}">TASKER {{config['SERVER_ENV']}}</b>
     <ul class="navbar-nav px-3">
       <li class="nav-item active dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <a href="#" class="nav-link dropdown-toggle {{config['COLOR_TEXT_CLASS']}}" data-toggle="dropdown" aria-expanded="false">
           <img src={{ url_for('static', filename='avatar.png')}} class="user-image" alt="User Image">
           <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
           <span class="hidden-xs">Usuario</span>
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Mi cuenta</a>
+          <a class="dropdown-item" href="#">Mi cuenta</a> 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/">Cerrar sesión</a>
         </div>
