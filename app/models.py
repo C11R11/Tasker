@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///my_database.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)'''
 
-class TaskJob(db.Model):
+class TaskJobModel(db.Model):
     __tablename__ = 'TaskJob'
     ID = db.Column(db.Text, primary_key=True)
     creation = db.Column(db.Text, nullable=False, default=datetime.datetime.utcnow)
@@ -38,18 +38,38 @@ class TaskJob(db.Model):
         hash.update(str(time.time()).encode('utf-8'))
         return hash.hexdigest()[:10]
 
+    def ToDict(self):
+        #print("taskdict-> ", self.__dict__)
+        return self.__dict__
+
     def ToJson(self):
         result = OrderedDict()
         for key in self.__mapper__.c.keys():
             result[key] = getattr(self, key)
         return json.dumps(result)
+    
+    @staticmethod
+    def getByIDJson(id):
+        task = TaskJobModel.query.get(id)
+        return task.ToJson()
+    
+    @staticmethod
+    def GetAllTasksJson():
+        tasks = TaskJobModel.query.all()
+        data2 = []
+        for task in tasks:
+            d = {}
+            for column in task.__table__.columns:
+                d[column.name] = str(getattr(task, column.name))
+            data2.append(d)
+        return json.dumps(data2)
 
 if __name__ == '__main__':
-    task = TaskJob("nombre")
+    task = TaskJobModel("nombre")
     db.session.add(task)
     db.session.commit()
 
-    tasks = TaskJob.query.all()
+    tasks = TaskJobModel.query.all()
     for task in tasks:
         print(task.__repr__())
     
